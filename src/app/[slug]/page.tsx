@@ -4,6 +4,20 @@ import { siteConfig } from "@/lib/site-config";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+// Import fully functional tool components
+import CompressImage from "@/components/tools/CompressImage";
+import CompressPdf from "@/components/tools/CompressPdf";
+import PassportPhoto from "@/components/tools/PassportPhoto";
+import SignatureBgRemover from "@/components/tools/SignatureBgRemover";
+import ImageResizer from "@/components/tools/ImageResizer";
+import ImageToPdf from "@/components/tools/ImageToPdf";
+import PdfMerger from "@/components/tools/PdfMerger";
+import PdfSplitter from "@/components/tools/PdfSplitter";
+import AttendanceCalculator from "@/components/tools/AttendanceCalculator";
+import CgpaCalculator from "@/components/tools/CgpaCalculator";
+import QrGenerator from "@/components/tools/QrGenerator";
+import PercentageCalculator from "@/components/tools/PercentageCalculator";
+
 const categoryStyles: Record<string, { iconBg: string; text: string }> = {
   image: { iconBg: "bg-blue-100/80 text-blue-600", text: "text-blue-600" },
   pdf: { iconBg: "bg-red-100/80 text-red-600", text: "text-red-600" },
@@ -45,6 +59,59 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
     applicationCategory: "UtilityApplication",
     operatingSystem: "Any",
     offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
+  };
+
+  // Helper to render the active tool dynamically
+  const renderToolComponent = () => {
+    switch (tool.slug) {
+      case "compress-image-to-20kb":
+        return <CompressImage />;
+      case "compress-pdf-to-100kb":
+        return <CompressPdf />;
+      case "passport-size-photo-maker":
+        return <PassportPhoto />;
+      case "signature-background-remover":
+        return <SignatureBgRemover />;
+      case "image-resizer-for-forms":
+        return <ImageResizer />;
+      case "image-to-pdf":
+        return <ImageToPdf />;
+      case "pdf-merger":
+        return <PdfMerger />;
+      case "pdf-splitter":
+        return <PdfSplitter />;
+      case "attendance-calculator":
+        return <AttendanceCalculator />;
+      case "cgpa-calculator":
+        return <CgpaCalculator />;
+      case "qr-code-generator":
+        return <QrGenerator />;
+      case "percentage-calculator":
+        return <PercentageCalculator />;
+      default:
+        return (
+          <div className="relative overflow-hidden bg-white rounded-3xl border-2 border-dashed border-border/80 p-12 sm:p-20 text-center shadow-xs">
+            <div className="absolute inset-0 pointer-events-none opacity-[0.03] hero-dots bg-[size:20px_20px]" />
+            <div className="relative z-10 max-w-md mx-auto">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-[36px] mb-6 animate-bounce">
+                🚧
+              </div>
+              <h2 className="font-heading text-[22px] font-extrabold text-foreground tracking-[-0.02em] mb-3">
+                Tool Interface Under Construction
+              </h2>
+              <p className="text-[14px] text-muted-light max-w-sm mx-auto mb-8 leading-[1.6] font-medium">
+                We are actively building this next-generation online processor. It runs securely in your local browser sandbox to keep data 100% private.
+              </p>
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2.5 px-6 py-3 bg-gradient-to-b from-accent to-accent-dark text-white text-[14px] font-bold rounded-xl shadow-md"
+              >
+                Return to Dashboard
+              </Link>
+            </div>
+          </div>
+        );
+    }
   };
 
   return (
@@ -93,30 +160,8 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
               </div>
             </div>
 
-            {/* Tool Interactive Panel (Coming Soon) */}
-            <div className="relative overflow-hidden bg-white rounded-3xl border-2 border-dashed border-border/80 p-12 sm:p-20 text-center shadow-xs">
-              {/* Subtle background matrix */}
-              <div className="absolute inset-0 pointer-events-none opacity-[0.03] hero-dots bg-[size:20px_20px]" />
-              
-              <div className="relative z-10 max-w-md mx-auto">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-[36px] mb-6 animate-bounce">
-                  🚧
-                </div>
-                <h2 className="font-heading text-[22px] font-extrabold text-foreground tracking-[-0.02em] mb-3">
-                  Tool Interface Under Construction
-                </h2>
-                <p className="text-[14px] text-muted-light max-w-sm mx-auto mb-8 leading-[1.6] font-medium">
-                  We are actively building this next-generation online processor. It runs securely in your local browser sandbox to keep data 100% private.
-                </p>
-                <Link
-                  href="/"
-                  className="inline-flex items-center gap-2.5 px-6 py-3 bg-gradient-to-b from-accent to-accent-dark text-white text-[14px] font-bold rounded-xl shadow-md shadow-accent/20 hover:shadow-lg transition-all duration-200"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m12 19-7-7 7-7" /><path d="M19 12H5" /></svg>
-                  Return to Dashboard
-                </Link>
-              </div>
-            </div>
+            {/* Dynamic Interactive Tool Interface */}
+            {renderToolComponent()}
           </div>
 
           {/* Right Detailed Sidebar Column */}
@@ -163,3 +208,4 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
     </>
   );
 }
+
