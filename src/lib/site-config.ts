@@ -1,0 +1,53 @@
+export const siteConfig = {
+  name: "Toolrize",
+  tagline: "Smart tools for documents, forms & students",
+  description:
+    "Free online tools for compressing PDFs, resizing images, creating passport photos, calculating attendance and more. Fast, simple and completely free utility tools platform.",
+  url: "https://toolrize.com",
+  ogImage: "/og-image.png",
+  creator: "Toolrize",
+  keywords: [
+    "online tools",
+    "pdf tools",
+    "image compressor",
+    "passport photo maker",
+    "student tools",
+    "attendance calculator",
+    "cgpa calculator",
+    "compress pdf",
+    "compress image",
+    "free online tools",
+    "document tools",
+    "form tools",
+    "utility tools",
+    "toolrize",
+  ],
+  links: {
+    about: "/about",
+    contact: "/contact",
+    privacy: "/privacy-policy",
+    terms: "/terms",
+    allTools: "/tools",
+  },
+  navLinks: [
+    { label: "Image Tools", href: "/category/image-tools" },
+    { label: "PDF Tools", href: "/category/pdf-tools" },
+    { label: "Student Tools", href: "/category/student-tools" },
+    { label: "All Tools", href: "/tools" },
+  ],
+  footerLinks: {
+    quickLinks: [
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms", href: "/terms" },
+      { label: "All Tools", href: "/tools" },
+    ],
+    categories: [
+      { label: "Image Tools", href: "/category/image-tools" },
+      { label: "PDF Tools", href: "/category/pdf-tools" },
+      { label: "Student Tools", href: "/category/student-tools" },
+      { label: "Form Tools", href: "/category/form-tools" },
+    ],
+  },
+} as const;
